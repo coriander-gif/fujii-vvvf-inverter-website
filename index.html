@@ -1,1 +1,793 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>株式会社 藤井製作所 | 次世代鉄道用VVVFインバータソリューション</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'Noto Sans JP', 'sans-serif'],
+                    },
+                    colors: {
+                        fujii: {
+                            bg: '#fdfbf7', // クリーム色
+                            surface: '#ffffff', // 白
+                            text: '#1e293b', // ダークグレー
+                            subtext: '#475569', // グレー
+                            accent: '#0284c7', // 青
+                            gto: '#ea580c', // オレンジ
+                            border: '#e2e8f0', // 境界線
+                            green: '#10b981' // 環境・安全用グリーン
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #fdfbf7;
+            color: #1e293b;
+        }
+        .circuit-bg {
+            background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        /* FAQのアコーディオン用スタイル */
+        details > summary {
+            list-style: none;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased circuit-bg">
 
+    <nav class="fixed w-full z-50 bg-fujii-bg/90 backdrop-blur-md border-b border-fujii-border transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="text-2xl font-black tracking-tighter text-fujii-text">
+                        FUJII<span class="text-fujii-accent">.E</span>
+                    </a>
+                    <span class="ml-3 text-sm text-fujii-subtext font-bold hidden xl:block">株式会社 藤井製作所</span>
+                </div>
+                
+                <!-- PC Menu -->
+                <div class="hidden xl:flex space-x-4 items-center">
+                    <a href="#sic" class="text-sm font-bold text-fujii-accent hover:text-blue-700 transition-colors">SiC</a>
+                    <a href="#igbt" class="text-sm font-semibold hover:text-fujii-accent transition-colors">IGBT</a>
+                    <a href="#gto" class="text-sm font-bold text-fujii-gto hover:text-orange-500 transition-colors">GTO Next</a>
+                    <a href="#comparison" class="text-sm font-semibold hover:text-fujii-accent transition-colors">比較</a>
+                    <a href="#ai-platform" class="text-sm font-semibold hover:text-fujii-accent transition-colors">予知保全</a>
+                    <a href="#mechanism" class="text-sm font-semibold hover:text-fujii-accent transition-colors">メカニズム</a>
+                    <a href="#workflow" class="text-sm font-semibold hover:text-fujii-accent transition-colors">導入の流れ</a>
+                    <a href="#sustainability" class="text-sm font-semibold hover:text-fujii-accent transition-colors">安全・環境</a>
+                    <a href="#faq" class="text-sm font-semibold hover:text-fujii-accent transition-colors">FAQ</a>
+                    <a href="#about" class="text-sm font-semibold hover:text-fujii-accent transition-colors">会社概要</a>
+                    <a href="#contact" class="bg-fujii-accent text-white px-5 py-2 rounded-full text-sm font-bold hover:bg-blue-600 transition-colors shadow-md shadow-blue-500/20">
+                        お問い合わせ
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="xl:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-fujii-subtext hover:text-fujii-text focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Dropdown -->
+        <div id="mobile-menu" class="hidden xl:hidden bg-white border-b border-fujii-border shadow-lg">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 h-[80vh] overflow-y-auto">
+                <a href="#sic" class="mobile-link block px-3 py-2 text-base font-bold text-fujii-accent hover:bg-blue-50 rounded-md">SiC</a>
+                <a href="#igbt" class="mobile-link block px-3 py-2 text-base font-medium text-fujii-text hover:text-fujii-accent hover:bg-gray-50 rounded-md">IGBT</a>
+                <a href="#gto" class="mobile-link block px-3 py-2 text-base font-bold text-fujii-gto hover:bg-orange-50 rounded-md">GTO Next</a>
+                <a href="#comparison" class="mobile-link block px-3 py-2 text-base font-medium text-fujii-text hover:text-fujii-accent hover:bg-gray-50 rounded-md">比較</a>
+                <a href="#ai-platform" class="mobile-link block px-3 py-2 text-base font-medium text-fujii-text hover:text-fujii-accent hover:bg-gray-50 rounded-md">予知保全クラウド</a>
+                <a href="#mechanism" class="mobile-link block px-3 py-2 text-base font-medium text-fujii-text hover:text-fujii-accent hover:bg-gray-50 rounded-md">メカニズム</a>
+                <a href="#workflow" class="mobile-link block px-3 py-2 text-base font-medium text-fujii-text hover:text-fujii-accent hover:bg-gray-50 rounded-md">導入の流れ</a>
+                <a href="#sustainability" class="mobile-link block px-3 py-2 text-base font-medium text-fujii-text hover:text-fujii-accent hover:bg-gray-50 rounded-md">安全と環境</a>
+                <a href="#faq" class="mobile-link block px-3 py-2 text-base font-medium text-fujii-text hover:text-fujii-accent hover:bg-gray-50 rounded-md">FAQ</a>
+                <a href="#about" class="mobile-link block px-3 py-2 text-base font-medium text-fujii-text hover:text-fujii-accent hover:bg-gray-50 rounded-md">会社概要</a>
+                <a href="#contact" class="mobile-link block px-3 py-2 text-base font-medium text-fujii-accent hover:bg-blue-50 rounded-md">お問い合わせ</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden flex items-center min-h-[80vh]">
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-fujii-bg z-0"></div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-black tracking-tight mb-6 leading-tight text-fujii-text">
+                その駆動が、<br class="md:hidden">未来を<span class="text-fujii-accent">加速</span>させる。
+            </h1>
+            <p class="mt-4 max-w-3xl mx-auto text-xl text-fujii-subtext font-medium mb-10">
+                過酷な環境から都市部の過密ダイヤまで対応。<br>
+                データと職人技が交差する、次世代鉄道用スマートVVVFインバータ。
+            </p>
+            <div class="flex justify-center gap-4">
+                <a href="#technology" class="bg-fujii-accent text-white px-8 py-4 rounded-full font-bold hover:bg-blue-600 transition-all shadow-md shadow-blue-500/20 flex items-center hover:-translate-y-1">
+                    制御テクノロジーを見る <i class="fa-solid fa-arrow-down ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="technology" class="py-20 bg-white scroll-mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-black mb-4 uppercase tracking-widest text-fujii-text">Core Technologies</h2>
+                <p class="text-fujii-subtext font-medium mb-4 max-w-2xl mx-auto">
+                    お客様の路線環境・車両特性に合わせた最適なパワー半導体ソリューションをご提供します。
+                </p>
+                <div class="h-1 w-20 bg-fujii-accent mx-auto rounded mt-6"></div>
+            </div>
+
+            <div class="space-y-24">
+                <!-- SiC -->
+                <div id="sic" class="scroll-mt-24 lg:grid lg:grid-cols-2 lg:gap-16 items-center">
+                    <div>
+                        <div class="inline-block px-3 py-1 bg-blue-50 text-fujii-accent rounded-full text-sm font-bold tracking-wider mb-4 border border-blue-200">NEXT GEN</div>
+                        <h3 class="text-3xl font-bold mb-4 text-fujii-text">ハイブリッド SiC/IGBT-VVVF</h3>
+                        <p class="text-fujii-subtext mb-6 leading-relaxed">
+                            大電流を要求される発車・加速時は堅牢な「IGBT」が全開でパワフルに駆動。最高速巡航時（微小電流）およびブレーキ（回生発電）時には「SiC」へ切り替え、超低損失での速度維持と架線への極限エネルギー回収を実現。1マイクロ秒（100万分の1秒）単位で電流をスパッと切り替える独自ハイブリッドシステムです。
+                        </p>
+                        <ul class="space-y-2 text-sm text-fujii-subtext font-medium">
+                            <li><i class="fa-solid fa-check text-fujii-accent mr-2"></i> 【発進・加速】IGBTが全開稼働で圧倒的な力強いトルク</li>
+                            <li><i class="fa-solid fa-check text-fujii-accent mr-2"></i> 【巡航・回生】SiCが超低損失で速度維持＆回生効率を極限化</li>
+                            <li><i class="fa-solid fa-check text-fujii-accent mr-2"></i> 1マイクロ秒（100万分の1秒）単位のリアルタイム素子切替</li>
+                        </ul>
+                    </div>
+                    <!-- Data Panel UI -->
+                    <div class="mt-10 lg:mt-0 relative">
+                        <div class="relative bg-white rounded-2xl border border-fujii-border p-6 shadow-sm overflow-hidden">
+                            <div class="absolute top-0 right-0 w-32 h-32 bg-blue-50 rounded-bl-full -z-10"></div>
+                            <div class="flex justify-between items-center mb-6 border-b border-gray-100 pb-4">
+                                <div class="flex items-center space-x-2">
+                                    <i class="fa-solid fa-microchip text-fujii-accent text-xl"></i>
+                                    <span class="font-bold text-sm text-fujii-text">SiC/IGBT DUAL SPEC</span>
+                                </div>
+                                <span class="text-xs bg-blue-50 text-fujii-accent px-2 py-1 rounded font-mono">1μs RESPONSE HYBRID</span>
+                            </div>
+                            <div class="space-y-4">
+                                <div>
+                                    <div class="flex justify-between text-xs text-fujii-subtext mb-1">
+                                        <span>回生ブレーキ電力回収率</span>
+                                        <span class="font-bold text-fujii-accent">99.8%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-100 rounded-full h-1.5"><div class="bg-fujii-accent h-1.5 rounded-full" style="width: 99.8%"></div></div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-xs text-fujii-subtext mb-1">
+                                        <span>巡航時スイッチング損失削減</span>
+                                        <span class="font-bold text-fujii-accent">-70%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-100 rounded-full h-1.5"><div class="bg-fujii-accent h-1.5 rounded-full" style="width: 90%"></div></div>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4 mt-6 pt-4 border-t border-gray-50">
+                                <div>
+                                    <p class="text-xs text-gray-400">主要用途</p>
+                                    <p class="text-sm font-bold text-fujii-text">加減速・巡航混在の主要路線</p>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-gray-400">制御方式</p>
+                                    <p class="text-sm font-bold text-fujii-text">1μs高速ハイブリッド切替</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- IGBT -->
+                <div id="igbt" class="scroll-mt-24 lg:grid lg:grid-cols-2 lg:gap-16 items-center lg:flex-row-reverse">
+                    <div class="lg:order-2">
+                        <div class="inline-block px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm font-bold tracking-wider mb-4 border border-gray-300">STANDARD</div>
+                        <h3 class="text-3xl font-bold mb-4 text-fujii-text">ハイブリッド IGBT-VVVF</h3>
+                        <p class="text-fujii-subtext mb-6 leading-relaxed">
+                            長年の実績と高い信頼性を誇る高耐圧IGBT素子に、最新の独自AI制御アルゴリズムを融合。過酷な環境下でも安定した走行性能を提供します。特急車両から貨物機関車まで幅広く対応可能な主力モデルです。
+                        </p>
+                        <ul class="space-y-2 text-sm text-fujii-subtext font-medium">
+                            <li><i class="fa-solid fa-check text-slate-500 mr-2"></i> 圧倒的な運用実績と高信頼性</li>
+                            <li><i class="fa-solid fa-check text-slate-500 mr-2"></i> 汎用性の高いモジュール設計</li>
+                        </ul>
+                    </div>
+                    <!-- Data Panel UI -->
+                    <div class="mt-10 lg:mt-0 relative lg:order-1">
+                        <div class="relative bg-white rounded-2xl border border-fujii-border p-6 shadow-sm overflow-hidden">
+                            <div class="absolute top-0 right-0 w-32 h-32 bg-gray-50 rounded-bl-full -z-10"></div>
+                            <div class="flex justify-between items-center mb-6 border-b border-gray-100 pb-4">
+                                <div class="flex items-center space-x-2">
+                                    <i class="fa-solid fa-server text-slate-600 text-xl"></i>
+                                    <span class="font-bold text-sm text-fujii-text">IGBT SPEC DATA</span>
+                                </div>
+                                <span class="text-xs bg-gray-100 text-slate-600 px-2 py-1 rounded font-mono">3300V / 1500A</span>
+                            </div>
+                            <div class="space-y-4">
+                                <div>
+                                    <div class="flex justify-between text-xs text-fujii-subtext mb-1">
+                                        <span>システム稼働率</span>
+                                        <span class="font-bold text-slate-700">99.99%</span>
+                                    </div>
+                                    <div class="w-full bg-gray-100 rounded-full h-1.5"><div class="bg-slate-600 h-1.5 rounded-full" style="width: 99%"></div></div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-xs text-fujii-subtext mb-1">
+                                        <span>モジュール耐久年数</span>
+                                        <span class="font-bold text-slate-700">20年+</span>
+                                    </div>
+                                    <div class="w-full bg-gray-100 rounded-full h-1.5"><div class="bg-slate-600 h-1.5 rounded-full" style="width: 85%"></div></div>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4 mt-6 pt-4 border-t border-gray-50">
+                                <div>
+                                    <p class="text-xs text-gray-400">主要用途</p>
+                                    <p class="text-sm font-bold text-fujii-text">特急・急行・一般形</p>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-gray-400">特徴</p>
+                                    <p class="text-sm font-bold text-fujii-text">高耐久・長寿命設計</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- GTO -->
+                <div id="gto" class="scroll-mt-24 lg:grid lg:grid-cols-2 lg:gap-16 items-center">
+                    <div>
+                        <div class="inline-block px-3 py-1 bg-orange-50 text-fujii-gto rounded-full text-sm font-bold tracking-wider mb-4 border border-orange-200">PATENTED TECH</div>
+                        <h3 class="text-3xl font-bold mb-4 text-fujii-text">
+                            <span class="text-fujii-gto">Fujii-GTO Next</span><br>超軽量化GTOシステム
+                        </h3>
+                        <p class="text-fujii-subtext mb-6 leading-relaxed">
+                            「重くて冷却系が大掛かり」というGTO素子の弱点を、新素材ヒートシンクと高密度実装技術により克服。力強い加速トルクと独特の磁気励起音を維持したまま、重量を従来の1/3まで軽量化。山岳路線や機関車の心臓部として活躍します。
+                        </p>
+                        <ul class="space-y-2 text-sm text-fujii-subtext font-medium">
+                            <li><i class="fa-solid fa-bolt text-fujii-gto mr-2"></i> 従来比 1/3 の劇的な軽量化を実現</li>
+                            <li><i class="fa-solid fa-bolt text-fujii-gto mr-2"></i> GTOならではの圧倒的初期トルク</li>
+                        </ul>
+                    </div>
+                    <!-- Data Panel UI -->
+                    <div class="mt-10 lg:mt-0 relative">
+                        <div class="relative bg-white rounded-2xl border border-fujii-border p-6 shadow-sm overflow-hidden">
+                            <div class="absolute top-0 right-0 w-32 h-32 bg-orange-50 rounded-bl-full -z-10"></div>
+                            <div class="flex justify-between items-center mb-6 border-b border-gray-100 pb-4">
+                                <div class="flex items-center space-x-2">
+                                    <i class="fa-solid fa-gauge-high text-fujii-gto text-xl"></i>
+                                    <span class="font-bold text-sm text-fujii-text">GTO NEXT DATA</span>
+                                </div>
+                                <span class="text-xs bg-orange-50 text-fujii-gto px-2 py-1 rounded font-mono">4500V / 4000A</span>
+                            </div>
+                            <div class="space-y-4">
+                                <div>
+                                    <div class="flex justify-between text-xs text-fujii-subtext mb-1">
+                                        <span>ユニット重量（従来比）</span>
+                                        <span class="font-bold text-fujii-gto">1/3 (33%)</span>
+                                    </div>
+                                    <div class="w-full bg-gray-100 rounded-full h-1.5"><div class="bg-fujii-gto h-1.5 rounded-full" style="width: 33%"></div></div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-xs text-fujii-subtext mb-1">
+                                        <span>初期起動トルク出力</span>
+                                        <span class="font-bold text-fujii-gto">MAX</span>
+                                    </div>
+                                    <div class="w-full bg-gray-100 rounded-full h-1.5"><div class="bg-fujii-gto h-1.5 rounded-full" style="width: 100%"></div></div>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4 mt-6 pt-4 border-t border-gray-50">
+                                <div>
+                                    <p class="text-xs text-gray-400">主要用途</p>
+                                    <p class="text-sm font-bold text-fujii-text">山岳路線・電気機関車</p>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-gray-400">サウンド</p>
+                                    <p class="text-sm font-bold text-fujii-text">独自GTO変調音</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="comparison" class="py-24 bg-slate-50 border-t border-fujii-border scroll-mt-20 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-black mb-4 uppercase tracking-widest text-fujii-text">Comparison</h2>
+                <p class="text-fujii-accent font-bold mb-4">従来技術との比較</p>
+                <div class="h-1 w-12 bg-fujii-accent mx-auto rounded"></div>
+                <p class="mt-6 text-fujii-subtext max-w-2xl mx-auto text-sm md:text-base">
+                    当社独自の「1μsハイブリッドシステム」は、従来の固定的な役割分担の限界を超え、動的に主役を切り替える次世代のアーキテクチャです。
+                </p>
+            </div>
+
+            <div class="overflow-x-auto pb-8">
+                <div class="min-w-[800px] bg-white rounded-2xl border border-fujii-border shadow-sm overflow-hidden">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-gray-100 text-fujii-subtext text-sm">
+                                <th class="py-4 px-6 font-bold border-b border-gray-200 w-1/4">比較項目</th>
+                                <th class="py-4 px-6 font-semibold border-b border-gray-200 border-r w-1/4">従来のIGBT-VVVF<br><span class="text-xs font-normal text-gray-500">標準型</span></th>
+                                <th class="py-4 px-6 font-semibold border-b border-gray-200 border-r w-1/4">一般的なハイブリッドSiC<br><span class="text-xs font-normal text-gray-500">他社主流方式</span></th>
+                                <th class="py-4 px-6 font-black border-b-2 border-fujii-accent bg-blue-50 text-fujii-accent w-1/4 relative">
+                                    <div class="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-fujii-accent text-white text-[10px] font-bold px-3 py-1 rounded-full whitespace-nowrap shadow-md">
+                                        OUR TECHNOLOGY
+                                    </div>
+                                    Fujii 1μs Hybrid<br><span class="text-xs font-bold text-blue-500">デュアル主役切替方式</span>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-sm">
+                            <!-- Row 1 -->
+                            <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                                <th class="py-4 px-6 font-bold text-fujii-text bg-gray-50">素子の構成・役割</th>
+                                <td class="py-4 px-6 text-gray-600">IGBTのみ</td>
+                                <td class="py-4 px-6 text-gray-600 border-r border-gray-100">IGBT（主）<br>＋ SiCダイオード（従）</td>
+                                <td class="py-4 px-6 font-bold text-fujii-text bg-blue-50/30">
+                                    <span class="text-fujii-accent">IGBT ＋ SiC</span><br>
+                                    <span class="text-xs text-fujii-subtext font-normal">両方をフル機能メインスイッチ化</span>
+                                </td>
+                            </tr>
+                            <!-- Row 2 -->
+                            <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                                <th class="py-4 px-6 font-bold text-fujii-text bg-gray-50">制御・切替速度</th>
+                                <td class="py-4 px-6 text-gray-600">ミリ秒単位</td>
+                                <td class="py-4 px-6 text-gray-600 border-r border-gray-100">ミリ秒単位</td>
+                                <td class="py-4 px-6 font-bold text-fujii-text bg-blue-50/30">
+                                    <span class="text-fujii-accent">1μs（100万分の1秒）単位</span>
+                                </td>
+                            </tr>
+                            <!-- Row 3 -->
+                            <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                                <th class="py-4 px-6 font-bold text-fujii-text bg-gray-50">発進・加速時<br><span class="text-xs font-normal text-gray-500">（大電流・高トルク）</span></th>
+                                <td class="py-4 px-6 text-gray-600">IGBTで動作</td>
+                                <td class="py-4 px-6 text-gray-600 border-r border-gray-100">IGBT＋SiCダイオードで動作</td>
+                                <td class="py-4 px-6 font-bold text-fujii-text bg-blue-50/30">
+                                    <span class="text-fujii-accent">IGBTが単独フル稼働</span><br>
+                                    <span class="text-xs text-fujii-subtext font-normal">（耐久性を確保しSiCを保護）</span>
+                                </td>
+                            </tr>
+                            <!-- Row 4 -->
+                            <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                                <th class="py-4 px-6 font-bold text-fujii-text bg-gray-50">最高速・巡航時<br><span class="text-xs font-normal text-gray-500">（微小電流）</span></th>
+                                <td class="py-4 px-6 text-red-500">損失発生大（IGBT動作維持）</td>
+                                <td class="py-4 px-6 text-gray-600 border-r border-gray-100">損失発生中（IGBT動作維持）</td>
+                                <td class="py-4 px-6 font-bold text-fujii-text bg-blue-50/30">
+                                    <span class="text-fujii-accent">SiCのみに完全切替</span><br>
+                                    <span class="text-xs text-fujii-subtext font-normal">（損失を極限までゼロへ）</span>
+                                </td>
+                            </tr>
+                            <!-- Row 5 -->
+                            <tr class="border-b border-gray-100 hover:bg-gray-50 transition-colors">
+                                <th class="py-4 px-6 font-bold text-fujii-text bg-gray-50">回生ブレーキ効率</th>
+                                <td class="py-4 px-6 text-gray-600">約70〜80%</td>
+                                <td class="py-4 px-6 text-gray-600 border-r border-gray-100">約85%</td>
+                                <td class="py-4 px-6 font-bold text-fujii-text bg-blue-50/30 text-xl">
+                                    <span class="text-fujii-accent">99.8% MAX</span>
+                                </td>
+                            </tr>
+                            <!-- Row 6 -->
+                            <tr class="hover:bg-gray-50 transition-colors">
+                                <th class="py-4 px-6 font-bold text-fujii-text bg-gray-50">初期導入コスト / LCC<br><span class="text-xs font-normal text-gray-500">（ライフサイクルコスト）</span></th>
+                                <td class="py-4 px-6 text-gray-600">導入: 安価<br><span class="text-xs text-gray-400">LCC: 高（保守・電力費大）</span></td>
+                                <td class="py-4 px-6 text-gray-600 border-r border-gray-100">導入: 普通<br><span class="text-xs text-gray-400">LCC: 中</span></td>
+                                <td class="py-4 px-6 bg-blue-50/30 relative border-l-2 border-fujii-accent">
+                                    <div class="text-gray-500 text-xs font-bold mb-1">導入: プレミアム（高価格帯）</div>
+                                    <div class="text-fujii-accent text-lg md:text-xl font-black tracking-tight flex items-center gap-1 my-1.5 whitespace-nowrap">
+                                        <i class="fa-solid fa-arrow-trend-down text-base"></i> LCC: 圧倒的極小
+                                    </div>
+                                    <div class="text-[11px] text-fujii-text font-bold mt-1 bg-white inline-block px-2 py-1 rounded shadow-sm border border-blue-100">
+                                        <i class="fa-solid fa-check text-fujii-green mr-1"></i>電力・保守費の削減で早期回収
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <p class="text-center text-xs text-gray-400 mt-2">※数値は当社シミュレーション値であり、実際の路線条件により変動します。</p>
+        </div>
+    </section>
+
+    <section id="ai-platform" class="py-24 bg-fujii-bg border-y border-fujii-border scroll-mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-black mb-4 uppercase tracking-widest text-fujii-accent">AI Optimization Cloud</h2>
+                <p class="mt-4 max-w-2xl text-xl text-fujii-subtext lg:mx-auto font-bold">
+                    AIが実現する「電力最適化 ＆ 予知保全」
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 特徴1：電力最適化 -->
+                <div class="bg-white p-8 rounded-2xl border border-fujii-border shadow-sm">
+                    <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-bolt-lightning text-xl text-fujii-accent"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-fujii-text">1. インバーター電力の最適化</h3>
+                    <p class="text-fujii-subtext text-sm leading-relaxed">
+                        路線勾配、乗車率、運行ダイヤなどのリアルタイムデータをAIが学習。VVVFインバータの出力周波数を極限まで細かく制御し、走行時の電力使用量を最小限に抑えます。
+                    </p>
+                </div>
+                <!-- 特徴2：修理タイミング最適化 -->
+                <div class="bg-white p-8 rounded-2xl border border-fujii-border shadow-sm">
+                    <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-screwdriver-wrench text-xl text-fujii-accent"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-fujii-text">2. 修理タイミングの最適化</h3>
+                    <p class="text-fujii-subtext text-sm leading-relaxed">
+                        出力波形や熱挙動の僅かな変化から、素子の劣化兆候を検出。パーツが無駄に早く交換されるのを防ぎ、故障リスクを極限まで抑えた最良の修理時期（予知保全）を提案します。
+                    </p>
+                </div>
+                <!-- 特徴3：OTAアップデート -->
+                <div class="bg-white p-8 rounded-2xl border border-fujii-border shadow-sm">
+                    <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-cloud-arrow-down text-xl text-fujii-accent"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-fujii-text">3. OTA ＆ 継続学習</h3>
+                    <p class="text-fujii-subtext text-sm leading-relaxed">
+                        全車両から集約された走行データをクラウドAIが蓄積。アップデート（OTA）によって制御アルゴリズムを常に最新化し、導入後も車両の省エネ性能と耐久性を高め続けます。
+                    </p>
+                </div>
+                <!-- 特徴4：デジタルツイン試運転 -->
+                <div class="bg-white p-8 rounded-2xl border border-fujii-border shadow-sm">
+                    <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-vr-cardboard text-xl text-fujii-accent"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-fujii-text">4. デジタルツイン仮想試運転</h3>
+                    <p class="text-fujii-subtext text-sm leading-relaxed">
+                        仮想空間上に車両と路線のデジタルツインを構築。実車を走らせる前にシミュレーションを行い、新路線における最適な制御パラメータを導き出します。
+                    </p>
+                </div>
+                <!-- 特徴5：サプライチェーン連携 -->
+                <div class="bg-white p-8 rounded-2xl border border-fujii-border shadow-sm md:col-span-2 lg:col-span-1">
+                    <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fa-solid fa-truck-fast text-xl text-fujii-accent"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-fujii-text">5. サプライチェーン自動連携</h3>
+                    <p class="text-fujii-subtext text-sm leading-relaxed">
+                        AIが予測した劣化状況に基づき、必要な交換部品を自動で提携工場・メーカーへ発注。予備部品の在庫最適化とダウンタイムの最小化を同時に実現します。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="mechanism" class="py-20 bg-white scroll-mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-black mb-2 text-fujii-text tracking-wider">HOW IT WORKS</h2>
+                <p class="text-fujii-accent font-bold mb-4">AI連携のメカニズム</p>
+                <div class="h-1 w-12 bg-fujii-border mx-auto rounded"></div>
+            </div>
+
+            <div class="relative">
+                <!-- タイムラインの線 (PC用) -->
+                <div class="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-gray-100 -translate-y-1/2 z-0"></div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
+                    <!-- Step 1 -->
+                    <div class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm text-center relative">
+                        <div class="w-12 h-12 bg-gray-50 rounded-full flex items-center justify-center mx-auto mb-4 border border-gray-200 text-fujii-text font-bold">1</div>
+                        <h4 class="font-bold text-fujii-text mb-2">高周期データ収集</h4>
+                        <p class="text-xs text-fujii-subtext">インバータ搭載センサーが、電圧・電流・温度波形をミリ秒単位でサンプリングします。</p>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm text-center relative">
+                        <div class="w-12 h-12 bg-gray-50 rounded-full flex items-center justify-center mx-auto mb-4 border border-gray-200 text-fujii-text font-bold">2</div>
+                        <h4 class="font-bold text-fujii-text mb-2">クラウドAI解析</h4>
+                        <p class="text-xs text-fujii-subtext">送信された走行データを、当社独自のAIモデルがリアルタイムで異常検知・効率分析。</p>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm text-center relative">
+                        <div class="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-4 border border-blue-200 text-fujii-accent font-bold">3</div>
+                        <h4 class="font-bold text-fujii-text mb-2">最適化フィードバック</h4>
+                        <p class="text-xs text-fujii-subtext">乗車率や天候に合わせた最適なPWM制御パターンを演算し、インバータへ即座に適用します。</p>
+                    </div>
+                    <!-- Step 4 -->
+                    <div class="bg-white p-6 rounded-xl border border-gray-100 shadow-sm text-center relative">
+                        <div class="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center mx-auto mb-4 border border-blue-200 text-fujii-accent font-bold">4</div>
+                        <h4 class="font-bold text-fujii-text mb-2">予知保全・レポート</h4>
+                        <p class="text-xs text-fujii-subtext">部品の劣化兆候を検知し、ダッシュボードへ警告。最適なメンテナンス計画を自動生成します。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="workflow" class="py-20 bg-fujii-bg border-y border-fujii-border scroll-mt-20">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-black mb-2 text-fujii-text tracking-wider">WORKFLOW</h2>
+                <p class="text-fujii-subtext font-bold mb-4">導入までのステップ</p>
+            </div>
+
+            <div class="space-y-6">
+                <div class="flex flex-col md:flex-row bg-white rounded-xl border border-fujii-border p-6 shadow-sm items-center gap-6">
+                    <div class="text-3xl font-black text-gray-200 md:w-20 text-center">01</div>
+                    <div class="flex-1 text-center md:text-left">
+                        <h4 class="font-bold text-fujii-text text-lg mb-1">要件定義・シミュレーション</h4>
+                        <p class="text-sm text-fujii-subtext">お客様の路線データ（勾配・駅間距離・想定ダイヤ）を頂き、デジタルツイン上で最適な素子（SiC/IGBT/GTO）と構成をシミュレーションします。</p>
+                    </div>
+                </div>
+                
+                <div class="flex flex-col md:flex-row bg-white rounded-xl border border-fujii-border p-6 shadow-sm items-center gap-6">
+                    <div class="text-3xl font-black text-gray-200 md:w-20 text-center">02</div>
+                    <div class="flex-1 text-center md:text-left">
+                        <h4 class="font-bold text-fujii-text text-lg mb-1">カスタム設計・試作機開発</h4>
+                        <p class="text-sm text-fujii-subtext">床下スペースや冷却要件に合わせて筐体を専用設計。ハードウェアの製造と並行して、初期のAI学習モデルを構築します。</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-col md:flex-row bg-white rounded-xl border border-fujii-border p-6 shadow-sm items-center gap-6">
+                    <div class="text-3xl font-black text-gray-200 md:w-20 text-center">03</div>
+                    <div class="flex-1 text-center md:text-left">
+                        <h4 class="font-bold text-fujii-text text-lg mb-1">本線試運転・パラメータ調整</h4>
+                        <p class="text-sm text-fujii-subtext">実際の車両に搭載し、オンボードで加速感・回生ブレーキのチューニングを実施。データ収集を開始します。</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-col md:flex-row bg-blue-50 rounded-xl border border-blue-100 p-6 shadow-sm items-center gap-6">
+                    <div class="text-3xl font-black text-blue-200 md:w-20 text-center">04</div>
+                    <div class="flex-1 text-center md:text-left">
+                        <h4 class="font-bold text-fujii-accent text-lg mb-1">本格稼働・予知保全クラウド連携</h4>
+                        <p class="text-sm text-fujii-subtext">営業運転開始後も、クラウドを通じて継続的にソフトウェアをアップデート。保守タイミングの最適化サポートを提供します。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="sustainability" class="py-20 bg-white scroll-mt-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-black mb-2 text-fujii-text tracking-wider">SUSTAINABILITY & SAFETY</h2>
+                <p class="text-fujii-green font-bold mb-4">安全と環境への約束</p>
+                <div class="h-1 w-12 bg-fujii-green mx-auto rounded"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div class="bg-gray-50 rounded-2xl p-8 border border-gray-100">
+                    <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center mb-6 shadow-sm">
+                        <i class="fa-solid fa-shield-halved text-2xl text-slate-700"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-fujii-text">極限のフェールセーフ設計</h3>
+                    <p class="text-fujii-subtext text-sm leading-relaxed">
+                        鉄道インフラにおいて「止まらないこと」は何よりも重要です。当社のインバータは制御回路の完全二重化（冗長化）を標準採用。万が一、一部の素子やAI通信網に障害が発生した場合でも、自律的に縮退運転（バックアップモード）へ移行し、安全に最寄り駅まで車両を駆動します。
+                    </p>
+                </div>
+
+                <div class="bg-green-50/30 rounded-2xl p-8 border border-green-100">
+                    <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center mb-6 shadow-sm border border-green-50">
+                        <i class="fa-solid fa-leaf text-2xl text-fujii-green"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-fujii-text">回生電力の最大化による脱炭素化</h3>
+                    <p class="text-fujii-subtext text-sm leading-relaxed">
+                        ブレーキ時にモーターから発生する電力を架線に戻す「回生ブレーキ」。AIによる高度な協調制御により、この回生エネルギーの吸収効率を従来のシステムより約15%向上。鉄道全体の消費電力を抑え、持続可能な公共交通機関（カーボンニュートラル）の実現に直接貢献します。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="py-20 bg-fujii-bg border-y border-fujii-border scroll-mt-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-black mb-2 text-fujii-text tracking-wider">FAQ</h2>
+                <p class="text-fujii-subtext font-bold mb-4">よくあるご質問</p>
+            </div>
+
+            <div class="space-y-4">
+                <!-- Q1 -->
+                <details class="group bg-white rounded-xl border border-fujii-border overflow-hidden cursor-pointer">
+                    <summary class="flex justify-between items-center font-bold px-6 py-5 text-fujii-text">
+                        <span>既存の古い車両にも導入（更新工事）は可能ですか？</span>
+                        <span class="transition group-open:rotate-180">
+                            <i class="fa-solid fa-chevron-down text-gray-400"></i>
+                        </span>
+                    </summary>
+                    <div class="px-6 pb-5 text-sm text-fujii-subtext leading-relaxed border-t border-gray-50 pt-4">
+                        はい、可能です。旧型の直流モーター車からVVVF制御への更新（レトロフィット）や、既存VVVF装置の更新用パッケージをご用意しております。既存の床下スペースに合わせた専用の筐体設計も承ります。
+                    </div>
+                </details>
+                <!-- Q2 -->
+                <details class="group bg-white rounded-xl border border-fujii-border overflow-hidden cursor-pointer">
+                    <summary class="flex justify-between items-center font-bold px-6 py-5 text-fujii-text">
+                        <span>「Fujii-GTO Next」の冷却方式はどのようになっていますか？</span>
+                        <span class="transition group-open:rotate-180">
+                            <i class="fa-solid fa-chevron-down text-gray-400"></i>
+                        </span>
+                    </summary>
+                    <div class="px-6 pb-5 text-sm text-fujii-subtext leading-relaxed border-t border-gray-50 pt-4">
+                        独自開発の特殊合金と新構造ヒートシンクを用いた「走行風冷と小型ブロワによる強制風冷のハイブリッド方式」を採用しています。これにより、GTO素子の高い発熱を処理しつつ、大幅な軽量化と省スペース化を実現しました。
+                    </div>
+                </details>
+                <!-- Q3 -->
+                <details class="group bg-white rounded-xl border border-fujii-border overflow-hidden cursor-pointer">
+                    <summary class="flex justify-between items-center font-bold px-6 py-5 text-fujii-text">
+                        <span>走行データを送信する際のセキュリティ対策はどうなっていますか？</span>
+                        <span class="transition group-open:rotate-180">
+                            <i class="fa-solid fa-chevron-down text-gray-400"></i>
+                        </span>
+                    </summary>
+                    <div class="px-6 pb-5 text-sm text-fujii-subtext leading-relaxed border-t border-gray-50 pt-4">
+                        車両とクラウド間の通信は、金融機関レベルのエンドツーエンド暗号化を施したセキュアな閉域網通信を利用します。また、インバータのコア制御回路と外部通信モジュールは物理的に分離されており、サイバー攻撃によって車両の走行安全性が脅かされることはありません。
+                    </div>
+                </details>
+                <!-- Q4 -->
+                <details class="group bg-white rounded-xl border border-fujii-border overflow-hidden cursor-pointer">
+                    <summary class="flex justify-between items-center font-bold px-6 py-5 text-fujii-text">
+                        <span>AIクラウドの導入は必須ですか？</span>
+                        <span class="transition group-open:rotate-180">
+                            <i class="fa-solid fa-chevron-down text-gray-400"></i>
+                        </span>
+                    </summary>
+                    <div class="px-6 pb-5 text-sm text-fujii-subtext leading-relaxed border-t border-gray-50 pt-4">
+                        必須ではありません。AIクラウド接続機能を持たない、スタンドアロン型のインバータ装置としての導入も可能です。ただし、修理タイミングの最適化や将来のソフトウェアアップデートの恩恵を受けられるため、クラウド連携モデルを推奨しております。
+                    </div>
+                </details>
+                <!-- Q5 価格について -->
+                <details class="group bg-white rounded-xl border border-fujii-border overflow-hidden cursor-pointer">
+                    <summary class="flex justify-between items-center font-bold px-6 py-5 text-fujii-text">
+                        <span>導入費用・価格について教えてください。</span>
+                        <span class="transition group-open:rotate-180">
+                            <i class="fa-solid fa-chevron-down text-gray-400"></i>
+                        </span>
+                    </summary>
+                    <div class="px-6 pb-5 text-sm text-fujii-subtext leading-relaxed border-t border-gray-50 pt-4">
+                        お客様の路線の仕様（架線電圧・編成両数・想定ダイヤ等）に合わせた完全受注設計となるため、価格は個別見積もりとさせていただいております。<br>
+                        基本構成は「ハードウェア費用」＋「AIクラウド利用料」となります。1編成（数両）からの実証実験（PoC）や、既存車両への試験搭載も承っておりますので、まずはお気軽にご相談ください。
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-20 bg-white scroll-mt-20">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-black mb-4 tracking-widest text-fujii-text">COMPANY</h2>
+                <div class="h-1 w-12 bg-fujii-accent mx-auto rounded"></div>
+            </div>
+            
+            <div class="bg-white rounded-2xl overflow-hidden border border-fujii-border shadow-sm">
+                <table class="w-full text-left border-collapse">
+                    <tbody class="text-sm md:text-base">
+                        <tr class="border-b border-fujii-border">
+                            <th class="w-1/3 py-5 px-6 font-semibold text-fujii-subtext bg-gray-50">会社名</th>
+                            <td class="py-5 px-6 text-fujii-text">株式会社 藤井製作所 <span class="text-gray-400 text-sm ml-2">(Fujii Electric Co., Ltd.)</span></td>
+                        </tr>
+                        <tr class="border-b border-fujii-border">
+                            <th class="w-1/3 py-5 px-6 font-semibold text-fujii-subtext bg-gray-50">設立</th>
+                            <td class="py-5 px-6 text-fujii-text">2026年 9月</td>
+                        </tr>
+                        <tr class="border-b border-fujii-border">
+                            <th class="w-1/3 py-5 px-6 font-semibold text-fujii-subtext bg-gray-50">事業内容</th>
+                            <td class="py-5 px-6 text-fujii-text leading-relaxed">
+                                鉄道車両用VVVFインバータ装置の設計・製造<br>
+                                パワーエレクトロニクス制御システムの開発<br>
+                                AIを活用した「電力最適化 ＆ 修理時期最適化」クラウドの運用
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="w-1/3 py-5 px-6 font-semibold text-fujii-subtext bg-gray-50">所在地</th>
+                            <td class="py-5 px-6 text-fujii-text leading-relaxed">
+                                [本社]<br>東京都北区<br>
+                                <span class="block mt-2">[支社・スマートファクトリー]</span>神奈川県海老名市
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 bg-gradient-to-b from-fujii-bg to-white scroll-mt-20">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-black mb-4 tracking-widest text-fujii-text">CONTACT</h2>
+                <p class="text-fujii-subtext mb-2">システム導入のご相談、レトロフィット開発のお問い合わせはこちら</p>
+                <p class="text-xs text-gray-500 font-bold bg-gray-100 inline-block px-3 py-1 rounded-full">※仕様に応じた個別見積もりとなります。実証実験（PoC）もご相談ください。</p>
+            </div>
+
+            <form class="space-y-6 bg-white p-8 rounded-2xl border border-fujii-border shadow-sm" onsubmit="event.preventDefault(); alert('デモ画面のため送信されません。');">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-medium text-fujii-subtext mb-2">貴社名・事業者名</label>
+                        <input type="text" class="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 text-fujii-text focus:outline-none focus:border-fujii-accent focus:ring-2 focus:ring-blue-100 transition-colors" placeholder="例：日本電鉄株式会社">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-fujii-subtext mb-2">ご担当者様名</label>
+                        <input type="text" class="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 text-fujii-text focus:outline-none focus:border-fujii-accent focus:ring-2 focus:ring-blue-100 transition-colors">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-fujii-subtext mb-2">メールアドレス</label>
+                    <input type="email" class="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 text-fujii-text focus:outline-none focus:border-fujii-accent focus:ring-2 focus:ring-blue-100 transition-colors">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-fujii-subtext mb-2">ご関心のある技術</label>
+                    <select class="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 text-fujii-text focus:outline-none focus:border-fujii-accent focus:ring-2 focus:ring-blue-100 transition-colors">
+                        <option>SiC-VVVFシステムについて</option>
+                        <option>IGBT-VVVFシステムについて</option>
+                        <option>GTO Next (超軽量化GTO) について</option>
+                        <option>予知保全クラウド・AIについて</option>
+                        <option>その他・総合的なご相談</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-fujii-subtext mb-2">お問い合わせ内容</label>
+                    <textarea rows="4" class="w-full bg-gray-50 border border-gray-300 rounded-lg px-4 py-3 text-fujii-text focus:outline-none focus:border-fujii-accent focus:ring-2 focus:ring-blue-100 transition-colors"></textarea>
+                </div>
+                <button type="submit" class="w-full bg-fujii-accent text-white font-bold text-lg py-4 rounded-lg hover:bg-blue-600 transition-colors shadow-md shadow-blue-500/20">
+                    送信する
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="bg-slate-900 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <div class="mb-6 md:mb-0 text-center md:text-left">
+                <a href="#" class="text-2xl font-black tracking-tighter text-white opacity-90 hover:opacity-100 transition-opacity">
+                    FUJII<span class="text-fujii-accent">.E</span>
+                </a>
+                <p class="text-slate-400 text-sm mt-2">Driven by Data, Crafted by Masters.</p>
+            </div>
+            <div class="text-slate-500 text-sm text-center">
+                &copy; 2026 Fujii Electric Co., Ltd. (Fiction)
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // スマホ用メニューの開閉制御
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // ページ内リンク全般のスムーズスクロールおよびモバイルメニュー制御
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if (!targetId || targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    e.preventDefault();
+                    
+                    // モバイルメニューが開いていれば閉じる
+                    if (menu && !menu.classList.contains('hidden')) {
+                        menu.classList.add('hidden');
+                    }
+                    
+                    // メニュー閉鎖後のレイアウト崩れを防ぐため少しディレイを入れて滑らかに移動
+                    setTimeout(() => {
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                    }, 50);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
